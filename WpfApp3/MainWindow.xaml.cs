@@ -49,18 +49,15 @@ namespace WpfApp3
 
         private void OpenApplication_Click(object sender, RoutedEventArgs e)
         {
-            string applicationname = Microsoft.VisualBasic.Interaction.InputBox("Applicationa daxil olun", "Application axtaris yeri", "");
+            string applicationName = Microsoft.VisualBasic.Interaction.InputBox("Applicationa daxil olun", "Application axtaris yeri", "");
 
-            if (!string.IsNullOrEmpty(applicationname))
+            if (!string.IsNullOrEmpty(applicationName))
             {
-                Process.Start(applicationname);
-                Task.Delay(3000).ContinueWith((t) =>
-                {
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        Application.Current.Shutdown();
-                    });
-                });
+                Process.Start(applicationName);
+
+                Thread.Sleep(10); 
+
+                Application.Current.Shutdown();
             }
         }
     }
